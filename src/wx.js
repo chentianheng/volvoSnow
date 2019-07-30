@@ -1,6 +1,21 @@
-import store from './store'
+// import store from './store'
 import axios from 'axios'
 import VueCookie from 'vue-cookie';
+
+export async function base(code){
+  await axios({
+    url:'/bmw/api/mp/oauth2/base?code=' + code,
+    method:'get'
+  }).then(res =>{
+    let result = res.data;
+    if (result.status === 1){
+      let openID = result.data;
+      VueCookie.set("openID",openID)
+    }else {
+      console.log(result.msg)
+    }
+  })
+}
 
 export function audioPlay() {
   wx.config({

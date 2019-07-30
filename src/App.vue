@@ -25,7 +25,7 @@
     data(){
       return{
         myHeight: (window.innerHeight) + 'px',
-        music: 'https://zhaocha.yf-gz.cn/file/1558359586024_7e903f1a0ab60a058a2f3157b9ac84c8.mp3',
+        music: 'https://mo.bintre.com/bensound-ukulele.mp3',
         audio: {
           musicIcon: {
             onPause: false,
