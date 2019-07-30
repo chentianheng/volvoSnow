@@ -116,11 +116,16 @@
                         method:'post',
                         data:this.user
                     }).then(res =>{
-                        console.log(res.data)
-                        // let result = res.data;
-                        // this.toast(result.msg)
+                        // console.log(res.data)
+                        let result = res.data;
+                        if (result.status === 1){
+                            this.successShow = true;
+                        } else {
+                            this.toast(result.msg)
+                        }
+
                     })
-                    this.successShow = true;
+
                 }
             },
             toast (str) {
