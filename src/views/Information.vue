@@ -111,6 +111,7 @@
                     this.user.openID = VueCookie.get("openID");
                     // this.user.openID = "oHDTCwX3Ql7BkN5zeJQFFmlbHECY"
                     axios({
+                        baseURL: 'https://binarytre.com/',
                         url:'bmw/api/snow',
                         method:'post',
                         data:this.user
