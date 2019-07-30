@@ -9,8 +9,13 @@
 </template>
 
 <script>
+    import {share} from "../wx";
+
     export default {
         name: "Home",
+        created(){
+            share()
+        },
         methods:{
             toItem(){
                 this.$router.push('/item')

@@ -12,12 +12,17 @@
 </template>
 
 <script>
+    import {noShare} from "../wx";
+
     export default {
         name: "Equipment01",
         data(){
             return{
                 isClick: false
             }
+        },
+        created(){
+            noShare()
         },
         methods:{
             toEquipment02(){
