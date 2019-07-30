@@ -29,7 +29,7 @@
             </div>
             <div class="itemContainer">
                 <img class="icon" src="../assets/icon/agents.png" alt="">
-                <select class="select" v-model="user.selected" >
+                <select class="select" v-model="user.agent" >
                     <option disabled>请选择经销商</option>
                     <option v-for="(option,index) in agents"
                             :value="option"
@@ -54,22 +54,24 @@
              @click="toHome">
             <img src="../assets/img/success.png" alt="" style="width: 50%">
             <p style="font-size: 14px;color: rgba(255,255,255,0.9);margin-top: 0.8rem">*了解更多活动详情详询沃尔沃授权经销商</p>
-            <p style="font-size: 12px;color: rgba(255,255,255,0.9);margin-top: 0.8rem">（点击任意位置返回首页）</p>
+            <p style="font-size: 12px;color: rgba(255,255,255,0.9);margin-top: 0.8rem">点击任意位置返回首页</p>
         </div>
     </div>
 </template>
 
 <script>
+    import VueCookie from 'vue-cookie';
     export default {
         name: "Information",
         data(){
             return{
                 user:{
+                    openID:null,
                     name:null,
-                    sex:"gentlemen",
+                    sex:1,
                     phone:null,
                     city:null,
-                    selected:null
+                    agent:null
                 },
                 agents:["1","11","111","1111","11111","111111"],
                 isFemale:false,
@@ -82,16 +84,16 @@
             }
         },
         created(){
-          this.user.selected = "请选择经销商"
+          this.user.agent = "请选择经销商"
         },
         methods:{
             changeSex(){
                 this.isFemale = !this.isFemale;
                 this.isMale = !this.isMale;
                 if (this.isMale) {
-                    this.user.sex = "gentlemen"
+                    this.user.sex = 1
                 }else {
-                    this.user.sex = "lady"
+                    this.user.sex = 0
                 }
                 // console.log(this.user.sex)
             },
@@ -102,9 +104,21 @@
                     this.toast('请输入联系方式')
                 } else if (!this.user.city){
                     this.toast('请输入城市名')
-                } else if (this.user.selected === "请选择经销商") {
+                } else if (this.user.agent === "请选择经销商") {
                     this.toast('请选择经销商')
                 } else {
+                    const axios = require('axios');
+                    this.user.openID = VueCookie.get("openID");
+                    // this.user.openID = "oHDTCwX3Ql7BkN5zeJQFFmlbHECY"
+                    axios({
+                        url:'bmw/api/snow',
+                        method:'post',
+                        data:this.user
+                    }).then(res =>{
+                        console.log(res.data)
+                        // let result = res.data;
+                        // this.toast(result.msg)
+                    })
                     this.successShow = true;
                 }
             },
