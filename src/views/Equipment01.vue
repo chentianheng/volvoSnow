@@ -1,13 +1,58 @@
 <template>
-    $END$
+    <div class="bgContainer" @click="toEquipment02">
+        <img class="title animated fadeInUp" src="../assets/img/title02.png" alt="" >
+        <img class="animated bounceIn delay-1s" src="../assets/img/skis.png" alt="" style="width: 80%;margin-top: 2rem">
+        <div style="position: relative;width: 70%">
+            <img class="animated fadeIn delay-2s" src="../assets/img/selectSkis.png" alt="" style="width: 100%;margin-top: 1rem">
+            <img class="animated zoomIn" v-show="isClick" src="../assets/icon/1.png" alt="" style="position: absolute;width: 28px;left: 9%;top: 40%">
+        </div>
+
+
+    </div>
 </template>
 
 <script>
     export default {
-        name: "Equipment01"
+        name: "Equipment01",
+        data(){
+            return{
+                isClick: false
+            }
+        },
+        methods:{
+            toEquipment02(){
+                let that = this;
+                that.isClick = true;
+                setTimeout(function () {
+                    that.$router.push('/equipment02')
+                },1000)
+            }
+        }
     }
 </script>
 
 <style scoped>
+    .bgContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: url("../assets/bg/bg03.png") repeat center top;
+        background-size: auto 100% ;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
 
+    .title{
+        margin-top: 2rem;
+        width: 60%;
+    }
+
+
+    @media only screen and (max-width: 320px){
+        .title{
+            margin-top: 1rem;
+            width: 60%;
+        }
+    }
 </style>

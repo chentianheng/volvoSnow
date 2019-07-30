@@ -1,10 +1,10 @@
 <template>
-    <div class="bgContainer" @click="toEquipment02">
+    <div class="bgContainer" @click="toEquipment03">
         <img class="title animated fadeInUp" src="../assets/img/title02.png" alt="" >
-        <img class="animated bounceIn delay-1s" src="../assets/img/skis.png" alt="" style="width: 80%;margin-top: 2rem">
+        <img class="animated bounceIn delay-1s" src="../assets/img/ski.png" alt="" style="width: 80%;margin-top: 2rem">
         <div style="position: relative;width: 70%">
-            <img class="animated fadeIn delay-1s" src="../assets/img/selectSkis.png" alt="" style="width: 100%;margin-top: 1rem">
-            <img class="animated bounceIn" v-show="isClick" src="../assets/icon/click.png" alt="" style="position: absolute;width: 28px;left: 10%;top: 40%">
+            <img class="animated fadeIn delay-2s" src="../assets/img/selectSkis.png" alt="" style="width: 100%;margin-top: 1rem">
+            <img class="animated zoomIn" v-show="isClick" src="../assets/icon/2.png" alt="" style="position: absolute;width: 28px;left: 9%;top: 40%">
         </div>
 
 
@@ -13,18 +13,18 @@
 
 <script>
     export default {
-        name: "Equipment01",
+        name: "Equipment02",
         data(){
             return{
                 isClick: false
             }
         },
         methods:{
-            toEquipment02(){
+            toEquipment03(){
                 let that = this;
                 that.isClick = true;
                 setTimeout(function () {
-                    that.$router.push('/equipment02')
+                    that.$router.push('/equipment03')
                 },1000)
             }
         }
@@ -36,7 +36,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background: url("../assets/bg/bg03.png") repeat center top;
+        background: url("../assets/bg/bg04.png") repeat center top;
         background-size: auto 100% ;
         position: relative;
         overflow-x: hidden;

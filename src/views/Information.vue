@@ -1,25 +1,131 @@
 <template>
     <div class="bgContainer">
-        <img src="../assets/icon/logo.png" alt="" style="width: 45px;height: 45px;position: absolute;top: 10px;right: 10px">
-        <img class="title animated fadeInUp" src="../assets/img/title.png" alt="">
-        <img class="btn animated bounceIn delay-2s" src="../assets/img/button01.png" alt="" @click="toItem">
+        <img class="title animated fadeInUp" src="../assets/img/title02.png" alt="">
+        <img class="subtitle animated fadeIn delay-1s" src="../assets/img/signUp.png" alt="" >
         <img class="whiteCar animated fadeInLeft delay-1s" src="../assets/img/white.png" alt="">
         <img class="redCar animated fadeInRight" src="../assets/img/red.png" alt="">
+        <!--信息填写内容-->
+        <div class="animated fadeInUp delay-1s" style="width: 60%;display: flex;flex-direction: column;align-items: center">
+            <div class="itemContainer">
+                <img class="icon" src="../assets/icon/user.png" alt="">
+                <input type="text" placeholder="姓名" class="nameInput" v-model="user.name">
+            </div>
+            <div style="display:flex;width: 70%;justify-content: space-between;align-items: center;margin-top: 0.8rem">
+                <img v-show="isMale" src="../assets/icon/chosen.png" class="icon" alt="" >
+                <img v-show="isFemale" src="../assets/icon/notChose.png" class="icon" alt="" @click="changeSex">
+                <p style="color: white;font-size: 14px">先生</p>
+                <img src="../assets/icon/or.png" class="icon" alt="">
+                <img v-show="isFemale" src="../assets/icon/chosen.png" class="icon" alt="" >
+                <img v-show="isMale" src="../assets/icon/notChose.png" class="icon" alt="" @click="changeSex">
+                <p style="color: white;font-size: 14px ">女士</p>
+            </div>
+            <div class="itemContainer">
+                <img class="icon" src="../assets/icon/phone.png" alt="">
+                <input type="number" placeholder="联系方式" class="nameInput" v-model="user.phone">
+            </div>
+            <div class="itemContainer">
+                <img class="icon" src="../assets/icon/city.png" alt="">
+                <input type="text" placeholder="城市" class="nameInput" v-model="user.city">
+            </div>
+            <div class="itemContainer">
+                <img class="icon" src="../assets/icon/agents.png" alt="">
+                <select class="select" v-model="user.selected" >
+                    <option disabled>请选择经销商</option>
+                    <option v-for="(option,index) in agents"
+                            :value="option"
+                            :key="index"
+                    >{{ option }}</option>
+                </select>
+            </div>
+        </div>
+        <!--提示文字-->
+        <p class="animated fadeIn delay-2s" style="font-size: 10px;color: rgba(255,255,255,0.7);margin-top: 0.8rem">您的信息将只用于沃尔沃相关市场活动，不会透露给第三方。</p>
+        <!--提交按钮-->
+        <button @click="submit" class="submit animated fadeIn delay-3s">确认</button>
+        <!--toast消息-->
+        <div class="toast animated fadeIn" v-show="toastShow">
+            {{toastText}}
+        </div>
+        <!--成功弹窗-->
+        <div class="animated fadeIn"
+             style="position:absolute;top:0;left:0;display: flex;flex-direction: column;justify-content: center;align-items: center;background-color: rgba(0,0,0,0.7);z-index: 3000"
+             :style="{height :this.windowHeight ,width: this.windowWidth}"
+             v-show="successShow"
+             @click="toHome">
+            <img src="../assets/img/success.png" alt="" style="width: 50%">
+            <p style="font-size: 14px;color: rgba(255,255,255,0.9);margin-top: 0.8rem">*了解更多活动详情详询沃尔沃授权经销商</p>
+            <p style="font-size: 12px;color: rgba(255,255,255,0.9);margin-top: 0.8rem">（点击任意位置返回首页）</p>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Home",
+        name: "Information",
+        data(){
+            return{
+                user:{
+                    name:null,
+                    sex:"gentlemen",
+                    phone:null,
+                    city:null,
+                    selected:null
+                },
+                agents:["1","11","111","1111","11111","111111"],
+                isFemale:false,
+                isMale:true,
+                toastShow: false,
+                toastText: '',
+                windowHeight:(window.innerHeight) + 'px',
+                windowWidth:(window.innerWidth) + 'px',
+                successShow:false
+            }
+        },
+        created(){
+          this.user.selected = "请选择经销商"
+        },
         methods:{
-            toItem(){
-                this.$router.push('/item')
+            changeSex(){
+                this.isFemale = !this.isFemale;
+                this.isMale = !this.isMale;
+                if (this.isMale) {
+                    this.user.sex = "gentlemen"
+                }else {
+                    this.user.sex = "lady"
+                }
+                // console.log(this.user.sex)
+            },
+            submit(){
+                if (!this.user.name){
+                    this.toast('请输入姓名')
+                } else if (!this.user.phone) {
+                    this.toast('请输入联系方式')
+                } else if (!this.user.city){
+                    this.toast('请输入城市名')
+                } else if (this.user.selected === "请选择经销商") {
+                    this.toast('请选择经销商')
+                } else {
+                    this.successShow = true;
+                }
+            },
+            toast (str) {
+                let that = this
+                that.toastText = str
+                that.toastShow = true
+                setTimeout(function(){
+                    that.toastShow = false
+                }, 1500)
+            },
+            toHome(){
+                this.$router.push('/')
             }
         }
     }
 </script>
 
 <style scoped>
+    @import "../assets/toast.css";
+
     .bgContainer{
         display: flex;
         flex-direction: column;
@@ -32,13 +138,13 @@
     }
 
     .title{
-        margin-top: 5rem;
+        margin-top: 2rem;
         width: 60%;
     }
 
-    .btn {
-        margin-top: 15%;
-        width: 80%;
+    .subtitle {
+        margin-top: 2rem;
+        width: 15%
     }
 
     .whiteCar {
@@ -53,5 +159,78 @@
         right: 20px;
         bottom: 1rem;
         width: 60%;
+    }
+
+    .itemContainer {
+        margin-top: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    .icon {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    .nameInput {
+        width: 75%;
+        height: 1.5rem;
+        /*line-height: 1.5rem;*/
+        border: solid 1px transparent;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+        background: white;
+        border-radius: 4px;
+        margin-right: 14px;
+        padding-left: 5px;
+    }
+
+    .select {
+        width: 78%;
+        height: 1.6rem;
+        border: solid 1px transparent;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+        background: white url("../assets/icon/down.png") no-repeat scroll right center ;
+        background-size: 1.2rem auto;
+        border-radius: 4px;
+        padding-left: 5px;
+        margin-right: 14px;
+    }
+
+    .submit {
+        background-color: white;
+        font-size: 14px;
+        border-radius: 20px;
+        margin-top: 2rem;
+        width: 8rem;
+        border: 0 solid transparent;
+        padding: 5px 0;
+        color: black;
+    }
+
+    @media only screen and (max-width: 320px){
+        .title{
+            margin-top: 1rem;
+            width: 60%;
+        }
+
+        .submit {
+            background-color: white;
+            font-size: 14px;
+            border-radius: 20px;
+            margin-top: 1rem;
+            width: 8rem;
+            border: 0 solid transparent;
+            padding: 5px 0;
+            color: black;
+        }
+
+        .subtitle {
+            margin-top: 1rem;
+            width: 10%
+        }
     }
 </style>
