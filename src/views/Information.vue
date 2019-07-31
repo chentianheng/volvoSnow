@@ -31,10 +31,10 @@
                 <img class="icon" src="../assets/icon/agents.png" alt="">
                 <select class="select" v-model="user.agent" >
                     <option disabled>请选择经销商</option>
-                    <option v-for="(option,index) in agents"
-                            :value="option"
+                    <option v-for="(agent,index) in agents"
+                            :value="agent"
                             :key="index"
-                    >{{ option }}</option>
+                    >{{ agent }}</option>
                 </select>
             </div>
         </div>
