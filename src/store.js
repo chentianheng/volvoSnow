@@ -18,7 +18,7 @@ export default new Vuex.Store({
       console.log(url)
       const axios = require('axios')
       await axios({
-        // baseURL: 'http://binarytre.com/',
+        baseURL: 'http://binarytre.com/',
         method:'get',
         url:'/bmw/api/mp/oauth2/JsTicket?url=' + url,
         responseType:'json'
