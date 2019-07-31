@@ -15,15 +15,32 @@
 
     export default {
         name: "Home",
-        // created(){
-        //     share()
-        // },
-        mounted(){
-            share()
+        data(){
+            return{
+                time:3
+            }
+        },
+        created(){
+            this.timer()
         },
         methods:{
             toItem(){
                 this.$router.replace('/item')
+            },
+            timer(){
+                if (this.time > 0 ){
+                    this.time--;
+                    var m = '';
+                    var s = '';
+                    m = Math.floor(this.time/60%60);
+                    m < 10&&(m='0'+m);
+                    s = Math.floor(this.time%60);
+                    s < 10&&(s='0'+s);
+                    setTimeout(this.timer, 1000);
+                }else {
+                    this.time = 0;
+                    share()
+                }
             }
         }
     }
