@@ -20,7 +20,7 @@
         },
         methods:{
             toItem(){
-                this.$router.push('/item')
+                this.$router.replace('/item')
             }
         }
     }
