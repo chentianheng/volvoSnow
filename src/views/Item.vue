@@ -10,8 +10,13 @@
 </template>
 
 <script>
+    import {noShare} from "../wx";
+
     export default {
         name: "item",
+        created(){
+            noShare()
+        },
         methods:{
             toEquipment(){
                 this.$router.push('/equipment01')
