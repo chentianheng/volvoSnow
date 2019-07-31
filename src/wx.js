@@ -53,7 +53,7 @@ export async function share() {
     menuList: ["menuItem:share:appMessage","menuItem:share:timeline"]
   })
 
-  wx.onMenuShareTimeline({
+    await wx.onMenuShareTimeline({
     title: option.title, // 分享标题
     link: option.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
     imgUrl: option.imgUrl, // 分享图标
@@ -65,7 +65,7 @@ export async function share() {
       // 用户取消分享后执行的回调函数
     }
   })
-  wx.onMenuShareAppMessage({
+    await wx.onMenuShareAppMessage({
     title: option.title, // 分享标题
     desc: option.desc, // 分享描述
     link: option.link,
