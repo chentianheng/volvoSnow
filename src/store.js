@@ -18,10 +18,9 @@ export default new Vuex.Store({
   },
   actions: {
     async latestWxConfig({state,commit}){
-      // let ua = navigator.userAgent.toLowerCase();
-      // let isAndroid = ua.indexOf('android') > -1 || ua.indexOf('adr') > -1;
-      // let url = isAndroid ? location.href.split('#')[0] : state.url
-      let url = state.url
+      let ua = navigator.userAgent.toLowerCase();
+      let isAndroid = ua.indexOf('android') > -1 || ua.indexOf('adr') > -1;
+      let url = isAndroid ? location.href.split('#')[0] : state.url
       const axios = require('axios')
       await axios({
         baseURL: 'http://binarytre.com/',
