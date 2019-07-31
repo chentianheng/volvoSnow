@@ -9,7 +9,7 @@
         <div class="animated fadeInUp delay-1s" style="width: 60%;display: flex;flex-direction: column;align-items: center">
             <div class="itemContainer">
                 <img class="icon" src="../assets/icon/user.png" alt="">
-                <input type="text" placeholder="姓名" class="nameInput" v-model="user.name">
+                <input type="text" placeholder="姓名" class="nameInput" v-model="user.name" @blur="fixScroll">
             </div>
             <div style="display:flex;width: 70%;justify-content: space-between;align-items: center;margin-top: 0.8rem">
                 <img v-show="isMale" src="../assets/icon/chosen.png" class="icon" alt="" >
@@ -149,6 +149,13 @@
             },
             toHome(){
                 this.$router.replace('/')
+            },
+            fixScroll(){
+                let u = navigator.userAgent;
+                let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                if (isiOS) {
+                    window.scrollTo(0, 0);
+                }
             }
         }
     }
