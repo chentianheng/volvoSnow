@@ -15,7 +15,10 @@
 
     export default {
         name: "Home",
-        created(){
+        // created(){
+        //     share()
+        // },
+        mounted(){
             share()
         },
         methods:{
