@@ -49,9 +49,9 @@ export async function share() {
     link: "http://binarytre.com/snow", // 分享链接，根据自身项目决定是否需要split
     imgUrl: "https://mo.bintre.com/volvo.png" // 分享图标, 请自行替换，需要绝对路径
   }
-  wx.showMenuItems({
-    menuList: ["menuItem:share:appMessage","menuItem:share:timeline"]
-  })
+  // wx.showMenuItems({
+  //   menuList: ["menuItem:share:appMessage","menuItem:share:timeline"]
+  // })
 
   wx.onMenuShareTimeline({
     title: option.title, // 分享标题
