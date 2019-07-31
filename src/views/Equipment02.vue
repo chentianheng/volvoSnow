@@ -7,7 +7,7 @@
             <img class="animated fadeIn delay-2s" src="../assets/img/selectSkis.png" alt="" style="width: 100%;margin-top: 1rem">
             <img class="animated zoomIn" v-show="isClick" src="../assets/icon/2.png" alt="" style="position: absolute;width: 22px;left: 10%;top: 43%">
         </div>
-
+        <img src="../assets/img/skiBg.png" alt="" style="position: absolute;width: 70%;left: 15%;bottom: 2%">
 
     </div>
 </template>
@@ -37,7 +37,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background: url("../assets/bg/bg04.png") repeat center top;
+        background: url("../assets/bg/bg02.png") repeat center top;
         background-size: auto 100% ;
         position: relative;
         overflow-x: hidden;
