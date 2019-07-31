@@ -25,7 +25,14 @@
             </div>
             <div class="itemContainer">
                 <img class="icon" src="../assets/icon/city.png" alt="">
-                <input type="text" placeholder="城市" class="nameInput" v-model="user.city">
+                <!--<input type="text" placeholder="城市" class="nameInput" v-model="user.city">-->
+                <select class="select" v-model="user.city" >
+                    <option disabled>城市</option>
+                    <option v-for="(city,index) in cities"
+                            :value="city"
+                            :key="index"
+                    >{{ city }}</option>
+                </select>
             </div>
             <div class="itemContainer">
                 <img class="icon" src="../assets/icon/agents.png" alt="">
@@ -74,6 +81,7 @@
                     agent:null
                 },
                 agents:["广州永安富豪汽车","广东南方骏沃汽车","深圳中汽南方华沃汽车","深圳德顺行汽车","佛山顺德区世维汽车","东莞世沃汽车"],
+                cities:["广州","佛山","深圳","东莞"],
                 isFemale:false,
                 isMale:true,
                 toastShow: false,
@@ -84,7 +92,9 @@
             }
         },
         created(){
-          this.user.agent = "请选择经销商"
+          this.user.agent = "请选择经销商";
+          this.user.city = "城市"
+
         },
         methods:{
             changeSex(){
@@ -102,7 +112,7 @@
                     this.toast('请输入姓名')
                 } else if (!this.user.phone) {
                     this.toast('请输入联系方式')
-                } else if (!this.user.city){
+                } else if (this.user.city === "城市"){
                     this.toast('请输入城市名')
                 } else if (this.user.agent === "请选择经销商") {
                     this.toast('请选择经销商')

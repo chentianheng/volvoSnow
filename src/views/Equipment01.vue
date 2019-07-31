@@ -4,7 +4,7 @@
         <img class="animated bounceIn delay-1s" src="../assets/img/skis.png" alt="" style="width: 80%;margin-top: 2rem">
         <div style="position: relative;width: 70%">
             <img class="animated fadeIn delay-2s" src="../assets/img/selectSkis.png" alt="" style="width: 100%;margin-top: 1rem">
-            <img class="animated zoomIn" v-show="isClick" src="../assets/icon/1.png" alt="" style="position: absolute;width: 28px;left: 9%;top: 40%">
+            <img class="animated zoomIn" v-show="isClick" src="../assets/icon/1.png" alt="" style="position: absolute;width: 22px;left: 10%;top: 43%">
         </div>
 
 

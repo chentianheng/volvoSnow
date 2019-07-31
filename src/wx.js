@@ -18,14 +18,8 @@ export async function base(code){
 }
 
 export function audioPlay() {
-  wx.config({
-    debug: false, // 开启调试模式
-    appId: '', // 必填，公众号的唯一标识
-    timestamp: 1, // 必填，生成签名的时间戳
-    nonceStr: '', // 必填，生成签名的随机串
-    signature: '', // 必填，签名，
-    jsApiList: [] // 必填，需要使用的JS接口列表，
-  });
+  store.dispatch('latestWxConfig')
+  wx.config(store.state.wxConfig)
   wx.ready(function () {
     var audio = document.getElementById("music_mp3_0");
     audio.play();
@@ -45,7 +39,7 @@ export async function share() {
   wx.config(store.state.wxConfig)
   let option = {
     title: '这个夏天有惊喜！', // 分享标题, 请自行替换
-    desc: '跟随沃尔沃纵情探索冰雪世界', // 分享描述, 请自行替换
+    desc: '跟随沃尔沃纵情探索冰雪世界，点击领取广州融创雪世界门票', // 分享描述, 请自行替换
     link: "http://binarytre.com/snow", // 分享链接，根据自身项目决定是否需要split
     imgUrl: "https://mo.bintre.com/volvo.png" // 分享图标, 请自行替换，需要绝对路径
   }

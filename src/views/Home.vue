@@ -1,5 +1,7 @@
 <template>
     <div class="bgContainer">
+        <!--点击提示-->
+        <img class="tips animated bounceIn delay-5s infinite " src="../assets/icon/click.png"  alt="" @click="toItem">
         <img src="../assets/icon/logo.png" alt="" style="width: 45px;height: 45px;position: absolute;top: 10px;right: 10px">
         <img class="title animated fadeInUp" src="../assets/img/title.png" alt="">
         <img class="btn animated bounceIn delay-2s" src="../assets/img/button01.png" alt="" @click="toItem">
@@ -58,5 +60,14 @@
         right: 20px;
         bottom: 1rem;
         width: 60%;
+    }
+
+    .tips{
+        position: absolute;
+        height: 30px;
+        width: auto;
+        right: 30%;
+        top: 55%;
+        z-index: 100
     }
 </style>
