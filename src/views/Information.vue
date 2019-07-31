@@ -22,12 +22,12 @@
             </div>
             <div class="itemContainer">
                 <img class="icon" src="../assets/icon/phone.png" alt="">
-                <input type="number" placeholder="联系方式" class="nameInput" v-model="user.phone">
+                <input type="number" placeholder="联系方式" class="nameInput" v-model="user.phone" @blur="fixScroll">
             </div>
             <div class="itemContainer">
                 <img class="icon" src="../assets/icon/city.png" alt="">
                 <!--<input type="text" placeholder="城市" class="nameInput" v-model="user.city">-->
-                <select class="select" v-model="user.city" >
+                <select class="select" v-model="user.city" @blur="fixScroll">
                     <option disabled>城市</option>
                     <option v-for="(city,index) in cities"
                             :value="city"
@@ -37,7 +37,7 @@
             </div>
             <div class="itemContainer">
                 <img class="icon" src="../assets/icon/agents.png" alt="">
-                <select class="select" v-model="user.agent" >
+                <select class="select" v-model="user.agent" @blur="fixScroll">
                     <option disabled>请选择经销商</option>
                     <option v-for="(agent,index) in agents"
                             :value="agent"
