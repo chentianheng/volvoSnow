@@ -24,7 +24,7 @@ router.beforeEach( async (to, from, next) => {
   }
 
   if (openID) {
-    next({path:'/'});
+    next();
   }else if (code) {
     await base(code);
     next();
