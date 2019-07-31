@@ -9,12 +9,17 @@
 </template>
 
 <script>
+    import {noShare} from "../wx";
+
     export default {
         name: "Info",
         data(){
             return{
                 isClick: false
             }
+        },
+        created(){
+            noShare()
         },
         methods:{
             toInfo(){

@@ -5,17 +5,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    wxConfig:{}
+    wxConfig:{},
+    url:''
   },
   mutations: {
+    setUrl(state,url){
+      state.url = url
+    },
     updateWxConfig(state,wxConfig){
       state.wxConfig = wxConfig;
     }
   },
   actions: {
     async latestWxConfig({state,commit}){
-      let url = encodeURIComponent(location.href.split('#')[0])
-      console.log(url)
+      let ua = navigator.userAgent.toLowerCase();
+      let isAndroid = ua.indexOf('android') > -1 || ua.indexOf('adr') > -1;
+      let url = isAndroid ? location.href.split('#')[0] : state.url
       const axios = require('axios')
       await axios({
         baseURL: 'http://binarytre.com/',

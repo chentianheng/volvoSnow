@@ -49,6 +49,10 @@ export async function share() {
     link: "http://binarytre.com/snow", // 分享链接，根据自身项目决定是否需要split
     imgUrl: "https://mo.bintre.com/volvo.png" // 分享图标, 请自行替换，需要绝对路径
   }
+  wx.showMenuItems({
+    menuList: ["menuItem:share:appMessage","menuItem:share:timeline"]
+  })
+
   wx.onMenuShareTimeline({
     title: option.title, // 分享标题
     link: option.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -74,4 +78,22 @@ export async function share() {
       // 用户取消分享后执行的回调函数
     }
   })
+}
+
+export function removeParam(key, sourceURL) {
+  var rtn = sourceURL.split("?")[0],
+      param,
+      params_arr = [],
+      queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+  if (queryString !== "") {
+    params_arr = queryString.split("&");
+    for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+      param = params_arr[i].split("=")[0];
+      if (param === key) {
+        params_arr.splice(i, 1);
+      }
+    }
+    rtn = rtn + "?" + params_arr.join("&");
+  }
+  return rtn;
 }
