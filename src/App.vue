@@ -61,6 +61,12 @@
       audioPlay();
       snow()
     },
+    mounted(){
+        //等微信多出来底部的返回条后,再获取高度,解决iOS新版微信底部返回横条问题
+        setTimeout(()=> {
+          this.myHeight = window.innerHeight  + 'px';
+        },200)
+    },
     methods:{
       onError() {
         // console.log('onError')

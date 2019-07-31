@@ -1,6 +1,7 @@
 <template>
     <div class="bgContainer" @click="toInfo">
         <img class="title animated fadeInUp" src="../assets/img/title02.png" alt="" >
+        <img src="../assets/icon/logo.png" alt="" style="width: 45px;height: 45px;position: absolute;top: 10px;right: 10px">
         <img class="animated fadeIn delay-1s" src="../assets/img/info.png" alt="" style="width: 80%;margin-top: 2rem">
         <img class="animated bounceIn delay-2s" src="../assets/img/buttonInfo.png" alt="" style="width: 60%;margin-top: 2rem">
         <img class="redCar animated fadeInRight" src="../assets/img/red.png" alt="">
