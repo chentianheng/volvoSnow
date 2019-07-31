@@ -73,7 +73,7 @@
                     city:null,
                     agent:null
                 },
-                agents:["1","11","111","1111","11111","111111"],
+                agents:["广州永安富豪汽车","广东南方骏沃汽车","深圳中汽南方华沃汽车","深圳德顺行汽车","佛山顺德区世维汽车","东莞世沃汽车"],
                 isFemale:false,
                 isMale:true,
                 toastShow: false,
