@@ -19,7 +19,7 @@
         },
         methods:{
             toInfo(){
-                this.$router.push('/information')
+                this.$router.replace('/information')
             }
         }
     }

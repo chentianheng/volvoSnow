@@ -25,7 +25,7 @@
                 let that = this;
                 that.isClick = true;
                 setTimeout(function () {
-                    that.$router.push('/info')
+                    that.$router.replace('/info')
                 },1000)
             }
         }

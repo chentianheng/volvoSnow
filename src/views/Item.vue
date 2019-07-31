@@ -20,7 +20,7 @@
         },
         methods:{
             toEquipment(){
-                this.$router.push('/equipment01')
+                this.$router.replace('/equipment01')
             }
         }
     }

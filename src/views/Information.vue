@@ -148,7 +148,7 @@
                 }, 1500)
             },
             toHome(){
-                this.$router.push('/')
+                this.$router.replace('/')
             }
         }
     }
