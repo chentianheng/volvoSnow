@@ -1,7 +1,7 @@
 <template>
     <div class="bgContainer" @click="toEquipment02">
         <img class="title animated fadeInUp" src="../assets/img/title02.png" alt="" >
-        <img src="../assets/icon/logo.png" alt="" style="width: 45px;height: 45px;position: absolute;top: 10px;right: 10px">
+        <!--<img src="../assets/icon/logo.png" alt="" style="width: 45px;height: 45px;position: absolute;top: 10px;right: 10px">-->
         <img class="animated bounceIn delay-1s" src="../assets/img/skis.png" alt="" style="width: 80%;margin-top: 2rem">
         <div style="position: relative;width: 70%">
             <img class="animated fadeIn delay-2s" src="../assets/img/selectSkis.png" alt="" style="width: 100%;margin-top: 1rem">

@@ -23,13 +23,17 @@ router.beforeEach( async (to, from, next) => {
     }
   }
 
-  if (openID) {
-    next();
-  }else if (code) {
-    await base(code);
-    next();
+  if (to.name === "information"){
+    if (openID) {
+      next();
+    }else if (code) {
+      await base(code);
+      next();
+    }else {
+      window.location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri="+ encodeURIComponent("http://binarytre.com/snow/infomation" )  + "&response_type=code&scope=snsapi_base&state=&connect_redirect=1#wechat_redirect")
+    }
   }else {
-    window.location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri="+ encodeURIComponent("http://binarytre.com/snow" )  + "&response_type=code&scope=snsapi_base&state=&connect_redirect=1#wechat_redirect")
+    next();
   }
   next();
 })

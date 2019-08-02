@@ -1,7 +1,7 @@
 <template>
     <div class="bgContainer">
         <img class="title animated fadeInUp" src="../assets/img/title02.png" alt="">
-        <img src="../assets/icon/logo.png" alt="" style="width: 45px;height: 45px;position: absolute;top: 10px;right: 10px">
+        <!--<img src="../assets/icon/logo.png" alt="" style="width: 45px;height: 45px;position: absolute;top: 10px;right: 10px">-->
         <img class="subtitle animated fadeIn delay-1s" src="../assets/img/signUp.png" alt="" >
         <img class="whiteCar animated fadeInLeft delay-1s" src="../assets/img/white.png" alt="">
         <img class="redCar animated fadeInRight" src="../assets/img/red.png" alt="">
