@@ -29,7 +29,7 @@ router.beforeEach( async (to, from, next) => {
     await base(code);
     next();
   }else {
-    window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri="+ encodeURIComponent("http://binarytre.com/snow" )  + "&response_type=code&scope=snsapi_base&state=&connect_redirect=1#wechat_redirect")
+    window.location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri="+ encodeURIComponent("http://binarytre.com/snow" )  + "&response_type=code&scope=snsapi_base&state=&connect_redirect=1#wechat_redirect")
   }
   next();
 })
